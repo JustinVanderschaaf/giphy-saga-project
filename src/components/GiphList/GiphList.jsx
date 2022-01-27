@@ -15,7 +15,9 @@ function GiphList() {
                     <li key={i}>
                         <img src={search.url} alt={search.text}/>
                     </li>
-                })}    
+                })}  
+
+              
             </ul> 
         </>
 

@@ -13,6 +13,8 @@ function* rootSaga(action) {
    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
 
     yield takeEvery('FETCH_FAVS', fetchFavs)
+
+    yield takeEvery('GET_SEARCH', getSearch)
 }
 
 function* fetchFavs() {
@@ -33,6 +35,19 @@ function* fetchCategories() {
         type: 'SET_CATEGORIES',
         payload: response.data
     })
+}
+
+function* getSearch(action) {
+
+    console.log('made it to getSearch', action.payload.search.searchQuery);
+    let response = yield axios.get(`api/category/search/${action.payload.search.searchQuery}`)
+    console.log('response is ', response.data);
+    yield put({
+        type: 'SET_SEARCH',
+        payload: response.data
+    })
+    
+    
 }
 const sagaMiddleware = createSagaMiddleware()
 
