@@ -5,7 +5,9 @@ function GiphList() {
     const giphList = useSelector(store=>store.searchReducer);
     console.log('giphList', giphList);
 
-    
+    const addFavorite = () => {
+        
+    }
 
     return(
         <>
@@ -15,6 +17,7 @@ function GiphList() {
                     return(
                     <li key={i}>
                         <img src={search.images.original.url} alt={search.text}/>
+                        <button onClick={addFavorite}>Favorite</button>
                     </li>
                     )
                 })}  
