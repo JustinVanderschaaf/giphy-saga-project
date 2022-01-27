@@ -27,7 +27,10 @@ function FavoritesView() {
     return (
         <div>
             {favorites.map(gif => (
-                <FavoritesItem gif={gif} />
+                <>
+                <FavoritesItem key={gif.id} gif={gif} />
+                <button>Delete</button>
+                </>
             ))}
         </div>
     )

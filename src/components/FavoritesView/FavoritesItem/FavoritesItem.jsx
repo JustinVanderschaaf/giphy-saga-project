@@ -5,7 +5,7 @@ function FavoritesItem({ gif }) {
     return (
         <div key={gif.id} style={{ height: 300, width: 300 }}>
             <img src={gif.url} alt={gif.alt} />
-            <CategorySelector gif={gif} />
+            <CategorySelector key={gif.id} gif={gif} />
         </div>
     )
 }

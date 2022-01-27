@@ -11,10 +11,10 @@ function CategorySelector({ gif }) {
     
     return (
         <div>
-            <label for="categories">Category:</label>
+            <label htmlFor="categories">Category:</label>
             <select name="categories" id="cars">
                 {categories.map( category => (
-                    <option value={category}>{category}</option>
+                    <option value={category} key={category}>{category}</option>
                 ))}
             </select>
         </div>
