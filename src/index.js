@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
@@ -13,6 +14,7 @@ function* rootSaga(action) {
    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
 
     yield takeEvery('FETCH_FAVS', fetchFavs)
+    yield takeEvery("DELETE_GIF", deleteGif);
 }
 
 function* fetchFavs() {
@@ -34,6 +36,18 @@ function* fetchCategories() {
         payload: response.data
     })
 }
+
+function* deleteGif(action) {
+    console.log("in deleteGif fancy", action.payload);
+  
+    // delete element data to the server
+    yield axios.delete(`/api/favorite/${action.payload}`);
+  
+    // Run the fetch
+    yield put({
+      type: "FETCH_FAVS",
+    });
+  }
 const sagaMiddleware = createSagaMiddleware()
 
 const categoryReducer = (state = [], action) => {
