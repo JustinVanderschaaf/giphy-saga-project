@@ -9,12 +9,14 @@ function GiphList() {
 
     return(
         <>
-            <h1>GiphList</h1>   
+            <h1>Gifist</h1>   
             <ul>
-                {giphList.data?.map((search, i) => {
+                {giphList.data?.map((search, i) =>  {
+                    return(
                     <li key={i}>
-                        <img src={search.url} alt={search.text}/>
+                        <img src={search.images.original.url} alt={search.text}/>
                     </li>
+                    )
                 })}  
 
               
