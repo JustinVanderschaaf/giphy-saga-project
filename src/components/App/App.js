@@ -4,6 +4,7 @@ import FavoritesView from "../FavoritesView/FavoritesView";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 function App(props) {
+
   const dispatch = useDispatch();
   useEffect(() => {
     getCategories(), getFavs();
@@ -20,6 +21,8 @@ function App(props) {
     })
   }
   return (
+    <header>
+    <h1>GIFFY SEARCH APP</h1>
     <Router>
       <div>
         <ul className="nav">
@@ -38,7 +41,9 @@ function App(props) {
         </Route>
       </div>
     </Router>
+    
   );
+  </header>
 }
 
 export default App;
