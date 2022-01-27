@@ -21,7 +21,7 @@ function CategorySelector({ gif }) {
     return (
         <div>
             <label htmlFor="categories">Category:</label>
-            <select name="categories" onChange={handleChange}>
+            <select name="categories" onChange={handleChange}> 
                 {categories.map( category => (
                     <option
                         value={category.id}
