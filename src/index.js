@@ -14,7 +14,12 @@ function* rootSaga(action) {
    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
 
     yield takeEvery('FETCH_FAVS', fetchFavs)
+
+
+    yield takeEvery('GET_SEARCH', getSearch)
+
     yield takeEvery("DELETE_GIF", deleteGif);
+
 }
 
 function* fetchFavs() {
@@ -37,6 +42,20 @@ function* fetchCategories() {
     })
 }
 
+
+function* getSearch(action) {
+
+    console.log('made it to getSearch', action.payload.search.searchQuery);
+    let response = yield axios.get(`api/category/search/${action.payload.search.searchQuery}`)
+    console.log('response is ', response.data);
+    yield put({
+        type: 'SET_SEARCH',
+        payload: response.data
+    })
+    
+    
+}
+
 function* deleteGif(action) {
     console.log("in deleteGif fancy", action.payload);
   
@@ -48,6 +67,7 @@ function* deleteGif(action) {
       type: "FETCH_FAVS",
     });
   }
+
 const sagaMiddleware = createSagaMiddleware()
 
 const categoryReducer = (state = [], action) => {

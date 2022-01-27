@@ -15,8 +15,10 @@ function GiphSearchForm() {
         console.log('new search!', newSearch);
 
         dispatch({
-            type: 'CREATE_NEW_SEARCH',
-            payload: newSearch
+            type: 'GET_SEARCH',
+            payload: {
+                search: newSearch
+            } 
         })
     };
 
@@ -27,7 +29,7 @@ function GiphSearchForm() {
             <form>
             <input
                 required
-                placeholder="Search Giphs"
+                placeholder="Search Gifs"
                 value={newSearch.searchQuery}
                 onChange={(event) => setNewSearch({
                     ...newSearch, searchQuery: event.target.value
