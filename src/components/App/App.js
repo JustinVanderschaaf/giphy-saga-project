@@ -1,7 +1,10 @@
+
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FavoritesView from "../FavoritesView/FavoritesView";
+import GiphSearchForm from '../GiphSearchForm/GiphSearchForm';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
+
 
 function App(props) {
 
@@ -21,6 +24,7 @@ function App(props) {
     })
   }
   return (
+
     <header>
     <h1>GIFFY SEARCH APP</h1>
     <Router>
@@ -34,7 +38,7 @@ function App(props) {
           </li>
         </ul>
         <Route exact path="/">
-          
+           <GiphSearchForm/>
         </Route>
         <Route exact path="/favorites">
           <FavoritesView />
@@ -42,6 +46,7 @@ function App(props) {
       </div>
     </Router>
     
+
   );
   </header>
 }

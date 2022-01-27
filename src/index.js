@@ -9,6 +9,7 @@ import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios'
 
 function* rootSaga(action) {
+
    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
 
     yield takeEvery('FETCH_FAVS', fetchFavs)
