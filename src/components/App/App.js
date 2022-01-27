@@ -46,9 +46,9 @@ function App(props) {
       </div>
     </Router>
     
-
+    </header>
   );
-  </header>
+ 
 }
 
 export default App;
