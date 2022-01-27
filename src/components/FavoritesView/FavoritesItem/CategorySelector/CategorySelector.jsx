@@ -12,10 +12,15 @@ function CategorySelector({ gif }) {
     const [categoryInput, setCategoryInput] = useState(gif.category_id);
 
     // Declare handleChange
-    const handleChange = () => {
+    const handleChange = (event) => {
         console.log(`in handleChange for ${gif.id}`);
-
+        console.log(event.target.value);
+        setCategoryInput(Number(event.target.value));
         // TODO: dispatch to update the category to new selected value
+        dispatch({
+            type: 'SET_CATEGORY',
+            payload: categoryInput
+        })
     }
     
     return (
