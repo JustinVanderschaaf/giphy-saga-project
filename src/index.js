@@ -9,12 +9,15 @@ import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios'
 
 function* rootSaga(action) {
-   
+
 }
+
+let exampleData = [{url:"https://giphy.com/gifs/cheeseburger-burger-king-food-sEjcayPGhu1Xi", title:"burger1"}, 
+                        {url:'https://giphy.com/gifs/shakingfoodgifs-food-shaking-efgsSvAvMjOpy', title:"burger2"}];
 
 const sagaMiddleware = createSagaMiddleware()
 
-const searchReducer = (state = [], action) => {
+const searchReducer = (state = exampleData, action) => {
     switch (action.type) {
         case 'SET_SEARCH':
             return action.payload;
