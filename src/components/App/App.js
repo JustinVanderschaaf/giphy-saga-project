@@ -5,9 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 function App(props) {
   const dispatch = useDispatch();
   useEffect(() => {
-    getCategories();
+    getCategories(), getFavs();
   }, []);
 
+  const getFavs = () => {
+    dispatch({
+      type: 'FETCH_FAVS'
+    })
+  }
   const getCategories = () => {
     dispatch({
       type: 'FETCH_CATEGORIES'

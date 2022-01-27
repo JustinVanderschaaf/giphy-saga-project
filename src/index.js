@@ -10,6 +10,18 @@ import axios from 'axios'
 
 function* rootSaga(action) {
    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
+
+    yield takeEvery('FETCH_FAVS', fetchFavs)
+}
+
+function* fetchFavs() {
+    console.log('made it to fetchFavs');
+    let response = yield axios.get('/api/favorite')
+    console.log('response is', response.data);
+    yield put({
+        type: 'SET_FAVS',
+        payload: response.data
+    })
 }
 
 function* fetchCategories() {
