@@ -47,7 +47,7 @@ You will need 2 views for the Base Features. You should put some thought into th
 
 You are given two router modules on the server with stubs for the routes you may need.
 
-- `GET /api/category` (complete)
+- `GET /api/category` (complete) 
     - Returns a list of all categories from the table ordered by name. You may test it if your server is running: [http://localhost:5000/api/category](http://localhost:5000/api/category)
 
 - `POST /api/favorite` (incomplete)

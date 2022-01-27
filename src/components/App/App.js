@@ -1,6 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function App(props) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const getCategories = () => {
+    dispatch({
+      type: 'FETCH_CATEGORIES'
+    })
+  }
   return (
     <div>
       <h1>Giphy Search!</h1>
