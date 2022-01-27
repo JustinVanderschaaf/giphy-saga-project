@@ -15,9 +15,3 @@ VALUES ('funny'), ('cohort'), ('cartoon'), ('nsfw'), ('meme');
 
 
 --favorites 
-CREATE TABLE "favorites" (
-	"id" SERIAL PRIMARY KEY,
-	"url" VARCHAR (2048), 
-	"alt_title" varchar (1024), 
-	"category_id" INT REFERENCES "category"
-);

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import FavoritesView from "../FavoritesView/FavoritesView";
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 function App(props) {
   const dispatch = useDispatch();
@@ -19,9 +20,24 @@ function App(props) {
     })
   }
   return (
-    <div>
-      <h1>Giphy Search!</h1>
-    </div>
+    <Router>
+      <div>
+        <ul className="nav">
+          <li>
+            <Link to="/">Search</Link>
+          </li>
+          <li>
+            <Link to="/favorites">favorites</Link>
+          </li>
+        </ul>
+        <Route exact path="/">
+          
+        </Route>
+        <Route exact path="/favorites">
+          <FavoritesView />
+        </Route>
+      </div>
+    </Router>
   );
 }
 
