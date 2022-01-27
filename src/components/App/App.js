@@ -11,7 +11,7 @@ function App(props) {
             <Link to="/">Search</Link>
           </li>
           <li>
-            <Link to="/favorites">Checkout</Link>
+            <Link to="/favorites">favorites</Link>
           </li>
         </ul>
         <Route exact path="/">
