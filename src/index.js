@@ -10,14 +10,41 @@ import axios from 'axios'
 
 function* rootSaga(action) {
 
+   yield takeEvery('FETCH_CATEGORIES', fetchCategories)
+
+    yield takeEvery('FETCH_FAVS', fetchFavs)
 }
 
-let exampleData = [{url:"https://giphy.com/gifs/cheeseburger-burger-king-food-sEjcayPGhu1Xi", title:"burger1"}, 
-                        {url:'https://giphy.com/gifs/shakingfoodgifs-food-shaking-efgsSvAvMjOpy', title:"burger2"}];
+function* fetchFavs() {
+    console.log('made it to fetchFavs');
+    let response = yield axios.get('/api/favorite')
+    console.log('response is', response.data);
+    yield put({
+        type: 'SET_FAVS',
+        payload: response.data
+    })
+}
 
+function* fetchCategories() {
+    console.log(' made it to fetchSearchResults');
+    let response = yield axios.get('/api/category')
+    console.log('response is', response.data);
+    yield put({
+        type: 'SET_CATEGORIES',
+        payload: response.data
+    })
+}
 const sagaMiddleware = createSagaMiddleware()
 
-const searchReducer = (state = exampleData, action) => {
+const categoryReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_CATEGORIES':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+const searchReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_SEARCH':
             return action.payload;
@@ -39,7 +66,8 @@ const favReducer = (state = [], action) => {
 const store = createStore(
     combineReducers({
         searchReducer,
-        favReducer
+        favReducer, 
+        categoryReducer
     }), 
     applyMiddleware(sagaMiddleware, logger)
 )
