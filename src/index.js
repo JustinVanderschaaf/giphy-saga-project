@@ -10,9 +10,9 @@ import axios from 'axios'
 
 function* rootSaga(action) {
 
-   yield takeEvery('FETCH_CATEGORIES', fetchCategories)
-
+    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
     yield takeEvery('FETCH_FAVS', fetchFavs)
+    yield takeEvery('SET_CATEGORIES', )
 }
 
 function* fetchFavs() {
@@ -33,6 +33,13 @@ function* fetchCategories() {
         type: 'SET_CATEGORIES',
         payload: response.data
     })
+}
+
+
+function* setCategory() {
+    console.log('in setCategory generator function');
+    let response = yield axios.put('/:id')
+    
 }
 const sagaMiddleware = createSagaMiddleware()
 
