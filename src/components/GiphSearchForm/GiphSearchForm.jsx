@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import GiphList from '../GiphList/GiphList';
-
-
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
 function GiphSearchForm() {
     const dispatch = useDispatch();
     const [newSearch, setNewSearch] = useState({
@@ -27,7 +27,7 @@ function GiphSearchForm() {
     return (
         <>
             <form>
-            <input
+            <Input
                 required
                 placeholder="Search Gifs"
                 value={newSearch.searchQuery}
@@ -35,7 +35,7 @@ function GiphSearchForm() {
                     ...newSearch, searchQuery: event.target.value
                 })}    
             />
-            <button onClick={onSubmit}>SEARCH</button>
+            <Button onClick={onSubmit}>SEARCH</Button>
             </form>
             <GiphList/>
         </>

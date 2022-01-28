@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
+import Button from '@mui/material/Button';
 
 function GiphList() {
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function GiphList() {
             type="video/mp4"/>
 
 </video>
-                        <button onClick={() => addFavorite(search)}>Favorite</button>
+                        <Button onClick={() => addFavorite(search)}>Favorite</Button>
                     </li>
                     )
                 })}  
