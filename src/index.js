@@ -15,6 +15,7 @@ function* rootSaga(action) {
     yield takeEvery('GET_SEARCH', getSearch);
     yield takeEvery('DELETE_GIF', deleteGif);
     yield takeEvery('PUT_CATEGORY', putCategory);
+    yield takeEvery('POST_FAV', postFav)
 }
 
 function* postFav(action) {
