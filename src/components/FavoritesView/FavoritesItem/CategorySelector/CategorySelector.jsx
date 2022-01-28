@@ -11,7 +11,7 @@ function CategorySelector({ gif }) {
             type: 'SET_CATEGORIES',
             payload: category
         });
-
+    }
     // Dispatch hook, store access
     const dispatch = useDispatch();
     const categories = useSelector(store => store.categoryReducer);
@@ -44,4 +44,4 @@ function CategorySelector({ gif }) {
     )
 }
 
-export default CategorySelector
+export default CategorySelector;

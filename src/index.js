@@ -13,7 +13,7 @@ function* rootSaga(action) {
 
     yield takeEvery('FETCH_CATEGORIES', fetchCategories)
     yield takeEvery('FETCH_FAVS', fetchFavs)
-    yield takeEvery('SET_CATEGORIES', )
+    // yield takeEvery('SET_CATEGORIES', )
     yield takeEvery('GET_SEARCH', getSearch)
     yield takeEvery("DELETE_GIF", deleteGif);
 
