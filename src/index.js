@@ -10,20 +10,18 @@ import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios'
 
 function* rootSaga(action) {
-
-    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
-    yield takeEvery('FETCH_FAVS', fetchFavs)
-    // yield takeEvery('SET_CATEGORIES', )
-    yield takeEvery('GET_SEARCH', getSearch)
-    yield takeEvery("DELETE_GIF", deleteGif);
+    yield takeEvery('FETCH_CATEGORIES', fetchCategories);
+    yield takeEvery('FETCH_FAVS', fetchFavs);
+    yield takeEvery('GET_SEARCH', getSearch);
+    yield takeEvery('DELETE_GIF', deleteGif);
+    yield takeEvery('PUT_CATEGORY', putCategory);
     yield takeEvery('POST_FAV', postFav)
-
 }
 
 function* postFav(action) {
 console.log('made it to postFav');
 yield axios.post('api/favorite', action.payload)
-console.log('action.payload is', action.payload);
+//console.log('action.payload is', action.payload);
 yield put({
     type: 'FETCH_FAVS'
 })
@@ -51,10 +49,12 @@ function* fetchCategories() {
 
 
 
-function* setCategory() {
-    console.log('in setCategory generator function');
-    let response = yield axios.put('/:id')
-    
+function* putCategory(action) {
+    console.log('in putCategory, action.payload is:', action.payload);
+    yield axios.put(`/api/favorite/${action.payload.id}`, { category_id: action.payload.category_id });
+    yield put({
+        type: 'FETCH_FAVS'
+    })
 }
 
 function* getSearch(action) {

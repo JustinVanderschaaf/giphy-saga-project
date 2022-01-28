@@ -17,7 +17,13 @@ function GiphList() {
                 {giphList.data?.map((search, i) =>  {
                     return(
                     <li key={i}>
-                        <img src={search.images.original.url} alt={search.title}/>
+                        {/* <img src={search.images.downsized_small.mp4} alt={search.title}/> */}
+                        <video controls loop autoPlay width="250">
+
+    <source src={search.images.downsized_small.mp4}
+            type="video/mp4"/>
+
+</video>
                         <button onClick={() => addFavorite(search)}>Favorite</button>
                     </li>
                     )
