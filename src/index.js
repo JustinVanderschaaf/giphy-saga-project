@@ -11,13 +11,10 @@ import axios from 'axios'
 
 function* rootSaga(action) {
 
-   yield takeEvery('FETCH_CATEGORIES', fetchCategories)
-
+    yield takeEvery('FETCH_CATEGORIES', fetchCategories)
     yield takeEvery('FETCH_FAVS', fetchFavs)
-
-
+    // yield takeEvery('SET_CATEGORIES', )
     yield takeEvery('GET_SEARCH', getSearch)
-
     yield takeEvery("DELETE_GIF", deleteGif);
 
 }
@@ -43,6 +40,13 @@ function* fetchCategories() {
 }
 
 
+
+function* setCategory() {
+    console.log('in setCategory generator function');
+    let response = yield axios.put('/:id')
+    
+}
+
 function* getSearch(action) {
 
     console.log('made it to getSearch', action.payload.search.searchQuery);
@@ -67,6 +71,7 @@ function* deleteGif(action) {
       type: "FETCH_FAVS",
     });
   }
+
 
 const sagaMiddleware = createSagaMiddleware()
 
