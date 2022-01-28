@@ -16,7 +16,17 @@ function* rootSaga(action) {
     // yield takeEvery('SET_CATEGORIES', )
     yield takeEvery('GET_SEARCH', getSearch)
     yield takeEvery("DELETE_GIF", deleteGif);
+    yield takeEvery('POST_FAV', postFav)
 
+}
+
+function* postFav(action) {
+console.log('made it to postFav');
+yield axios.post('api/favorite', action.payload)
+console.log('action.payload is', action.payload);
+yield put({
+    type: 'FETCH_FAVS'
+})
 }
 
 function* fetchFavs() {
