@@ -23,7 +23,7 @@ function* rootSaga(action) {
 function* postFav(action) {
 console.log('made it to postFav');
 yield axios.post('api/favorite', action.payload)
-console.log('action.payload is', action.payload);
+//console.log('action.payload is', action.payload);
 yield put({
     type: 'FETCH_FAVS'
 })
