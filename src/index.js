@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
@@ -13,6 +14,9 @@ function* rootSaga(action) {
     yield takeEvery('FETCH_CATEGORIES', fetchCategories)
     yield takeEvery('FETCH_FAVS', fetchFavs)
     yield takeEvery('SET_CATEGORIES', )
+    yield takeEvery('GET_SEARCH', getSearch)
+    yield takeEvery("DELETE_GIF", deleteGif);
+
 }
 
 function* fetchFavs() {
@@ -36,11 +40,39 @@ function* fetchCategories() {
 }
 
 
+
 function* setCategory() {
     console.log('in setCategory generator function');
     let response = yield axios.put('/:id')
     
 }
+
+function* getSearch(action) {
+
+    console.log('made it to getSearch', action.payload.search.searchQuery);
+    let response = yield axios.get(`api/category/search/${action.payload.search.searchQuery}`)
+    console.log('response is ', response.data);
+    yield put({
+        type: 'SET_SEARCH',
+        payload: response.data
+    })
+    
+    
+}
+
+function* deleteGif(action) {
+    console.log("in deleteGif fancy", action.payload);
+  
+    // delete element data to the server
+    yield axios.delete(`/api/favorite/${action.payload}`);
+  
+    // Run the fetch
+    yield put({
+      type: "FETCH_FAVS",
+    });
+  }
+
+
 const sagaMiddleware = createSagaMiddleware()
 
 const categoryReducer = (state = [], action) => {
