@@ -3,27 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 function CategorySelector({ gif }) {
-  
-     const setCategory = (id) => {
-        console.log('in setCategory');
 
-        dispatch({
-            type: 'SET_CATEGORIES',
-            payload: category
-        });
-    }
     // Dispatch hook, store access
     const dispatch = useDispatch();
     const categories = useSelector(store => store.categoryReducer);
     console.log('categories are', categories);
 
-    // Set state variable for categoryInput
-    const [categoryInput, setCategoryInput] = useState(gif.category_id);
-
     // Declare handleChange
-    const handleChange = () => {
+    const handleChange = (event) => {
         console.log(`in handleChange for ${gif.id}`);
-
+        // Send PUT request to update category to newly selected option
+        dispatch({
+            type: 'PUT_CATEGORY',
+            payload: {
+                id: gif.id,
+                category_id: Number(event.target.value)
+            }
+        });
     }
     
     return (
