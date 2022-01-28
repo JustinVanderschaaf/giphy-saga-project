@@ -10,13 +10,20 @@ import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios'
 
 function* rootSaga(action) {
-
     yield takeEvery('FETCH_CATEGORIES', fetchCategories);
     yield takeEvery('FETCH_FAVS', fetchFavs);
     yield takeEvery('GET_SEARCH', getSearch);
     yield takeEvery('DELETE_GIF', deleteGif);
     yield takeEvery('PUT_CATEGORY', putCategory);
+}
 
+function* postFav(action) {
+console.log('made it to postFav');
+yield axios.post('api/favorite', action.payload)
+console.log('action.payload is', action.payload);
+yield put({
+    type: 'FETCH_FAVS'
+})
 }
 
 function* fetchFavs() {
