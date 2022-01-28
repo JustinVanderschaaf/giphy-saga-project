@@ -1,7 +1,16 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+
 function CategorySelector({ gif }) {
+  
+     const setCategory = (id) => {
+        console.log('in setCategory');
+
+        dispatch({
+            type: 'SET_CATEGORIES',
+            payload: category
+        });
 
     // Dispatch hook, store access
     const dispatch = useDispatch();
@@ -15,7 +24,6 @@ function CategorySelector({ gif }) {
     const handleChange = () => {
         console.log(`in handleChange for ${gif.id}`);
 
-        // TODO: dispatch to update the category to new selected value
     }
     
     return (
