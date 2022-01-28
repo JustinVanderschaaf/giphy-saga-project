@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import Button from '@mui/material/Button';
-
+import Grid from '@mui/material/Grid';
 function GiphList() {
     const dispatch = useDispatch();
     const giphList = useSelector(store=>store.searchReducer);
@@ -14,10 +14,10 @@ function GiphList() {
     return(
         <>
             <h1>Gifist</h1>   
-            <ul>
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {giphList.data?.map((search, i) =>  {
                     return(
-                    <li key={i}>
+                    <Grid key={i}>
                         {/* <img src={search.images.downsized_small.mp4} alt={search.title}/> */}
                         <video controls loop autoPlay width="250">
 
@@ -26,12 +26,12 @@ function GiphList() {
 
 </video>
                         <Button onClick={() => addFavorite(search)}>Favorite</Button>
-                    </li>
+                    </Grid>
                     )
                 })}  
 
               
-            </ul> 
+            </Grid> 
         </>
 
     )

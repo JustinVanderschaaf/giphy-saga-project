@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import GiphList from '../GiphList/GiphList';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
+
 function GiphSearchForm() {
     const dispatch = useDispatch();
     const [newSearch, setNewSearch] = useState({
